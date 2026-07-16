@@ -30,13 +30,10 @@ systems work.
 ## Key Features
 
 ### Multi-Domain Feature Extraction (47 features)
-- **Statistical (11):** RMS, Peak, Std, Kurtosis, Skewness, Crest Factor,
-  Peak-to-Peak, Impulse Factor, Shape Factor, Margin Factor, Mean
-- **Frequency (8):** Dominant Frequency, Spectral Centroid, Spectral Energy,
-  Spectral Entropy, Low/Mid/High Band Ratio, Peak Amplitude
-- **Wavelet (16):** DWT (db4, level 3) — Energy, MeanAbs, Std, Entropy per level
-- **Physics (12):** BPFO/BPFI/BSF/FTF energy, harmonic energy (1x/2x/3x),
-  sideband energy, fault energy ratio
+- **Statistical (11):** RMS, Peak, Std, Kurtosis, Skewness, Crest Factor, Peak-to-Peak, Impulse Factor, Shape Factor, Margin Factor, Mean
+- **Frequency (8):** Dominant Frequency, Spectral Centroid, Spectral Energy, Spectral Entropy, Low/Mid/High Band Ratio, Peak Amplitude
+- **Wavelet (16):** DWT db4 level 3 — Energy, MeanAbs, Std, Entropy per level
+- **Physics (12):** BPFO/BPFI/BSF/FTF energy, harmonic energy 1x/2x/3x, sideband energy, fault energy ratio
 
 ### Physics Engine
 - Bearing kinematics: BPFO, BPFI, BSF, FTF from bearing geometry
@@ -59,13 +56,13 @@ systems work.
 - Maintenance recommendation: Continue / Inspect / Replace
 
 ### Validation
-- Shuffle test: 32.6% (PASSED — model is genuine, not memorising)
+- Shuffle test: 32.6% — PASSED, model is genuine
 - 5-Fold Cross Validation: 99.76% mean accuracy, 0.0015 std
 - ROC AUC: 1.0 for all 4 classes
 
 ### AI vs Physics Agreement
 - Cross-validates ML prediction with physics engine
-- Shows AGREE ✅ or DISAGREE ⚠️
+- Shows AGREE or DISAGREE
 - Flags disagreement for manual inspection
 
 ### Streamlit Dashboard
@@ -92,28 +89,28 @@ systems work.
 | Model | Accuracy | Precision | Recall | F1 Score |
 |---|---|---|---|---|
 | Random Forest | 99.53% | 99.53% | 99.53% | 99.53% |
-| **SVM** | **100.00%** | **100.00%** | **100.00%** | **100.00%** |
+| SVM | 100.00% | 100.00% | 100.00% | 100.00% |
 | XGBoost | 99.53% | 99.53% | 99.53% | 99.53% |
 
 ### Validation
 
 | Test | Result | Status |
 |---|---|---|
-| Shuffle Test | 32.6% | ✅ PASSED |
-| 5-Fold CV Mean | 99.76% | ✅ |
-| 5-Fold CV Std | 0.0015 | ✅ |
-| ROC AUC — Healthy | 1.0 | ✅ |
-| ROC AUC — Ball | 1.0 | ✅ |
-| ROC AUC — Inner | 1.0 | ✅ |
-| ROC AUC — Outer | 1.0 | ✅ |
+| Shuffle Test | 32.6% | PASSED |
+| 5-Fold CV Mean | 99.76% | PASSED |
+| 5-Fold CV Std | 0.0015 | PASSED |
+| ROC AUC Healthy | 1.0 | PASSED |
+| ROC AUC Ball | 1.0 | PASSED |
+| ROC AUC Inner | 1.0 | PASSED |
+| ROC AUC Outer | 1.0 | PASSED |
 
-### Physics Validation (Outer Race Fault sample)
+### Physics Validation
 
 | Parameter | Value |
 |---|---|
-| Target Frequency (BPFO) | 110.67 Hz |
+| Target Frequency BPFO | 110.67 Hz |
 | Physics Confidence | 100% |
-| AI vs Physics | ✅ AGREE |
+| AI vs Physics | AGREE |
 
 ---
 
@@ -124,13 +121,13 @@ systems work.
 | Class | Label | Files |
 |---|---|---|
 | Healthy | 0 | 97, 98, 99, 100 |
-| Ball Fault | 1 | 118–121, 185–188 |
-| Inner Race Fault | 2 | 105–108, 169–172 |
-| Outer Race Fault | 3 | 294–297, 313, 315 |
+| Ball Fault | 1 | 118-121, 185-188 |
+| Inner Race Fault | 2 | 105-108, 169-172 |
+| Outer Race Fault | 3 | 294-297, 313, 315 |
 
 - Total segments: 2126
 - Segment size: 2048 samples
-- Sampling frequency: 12,000 Hz
+- Sampling frequency: 12000 Hz
 - Source: https://engineering.case.edu/bearingdatacenter
 
 ---
@@ -154,3 +151,69 @@ Fault frequencies at 1797 RPM:
 ---
 
 ## Folder Structure
+
+- data/CWRU/Healthy, Ball, Inner, Outer
+- results/ — all plots, models, PDF report
+- src/preprocessing/ — data_loader.py
+- src/features/ — statistical, frequency, wavelet, feature_extractor
+- src/physics/ — bearing_physics.py
+- src/models/ — random_forest.py
+- src/evaluation/ — metrics.py
+- src/visualisation/ — plots.py
+- src/explainability/ — shap_explainer.py
+- src/health/ — health_monitor.py
+- src/reports/ — report_generator.py
+- src/dashboard/ — app.py
+- main.py
+
+---
+
+## Installation
+
+```bash
+pip install numpy scipy scikit-learn matplotlib pywavelets xgboost shap streamlit reportlab seaborn pandas
+```
+
+---
+
+## How to Run
+
+```bash
+python main.py
+```
+
+```bash
+streamlit run src/dashboard/app.py
+```
+
+---
+
+## Tech Stack
+
+| Category | Libraries |
+|---|---|
+| Signal Processing | NumPy, SciPy, PyWavelets |
+| Machine Learning | Scikit-learn, XGBoost |
+| Explainability | SHAP |
+| Visualisation | Matplotlib, Seaborn |
+| Dashboard | Streamlit |
+| Report Generation | ReportLab |
+| Data Handling | Pandas |
+
+---
+
+## References
+
+1. A physics-informed deep learning approach for bearing fault detection. ScienceDirect 2021.
+2. Research on bearing fault diagnosis based on machine learning and SHAP interpretability. Scientific Reports 2025.
+3. SHAP for Efficient Feature Selection in Rolling Bearing Fault Diagnosis. ResearchGate 2024.
+4. Machine Learning and Deep Learning Algorithms for Bearing Fault Diagnostics. arXiv 2019.
+5. CWRU Bearing Dataset. Case Western Reserve University Bearing Data Center.
+
+---
+
+## Author
+
+**Sai Dileep**
+Mechanical Engineering, NIT Calicut
+Specialisation: Vibration Analysis, Physics-Guided ML, Predictive Maintenance
