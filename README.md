@@ -204,16 +204,18 @@ streamlit run src/dashboard/app.py
 
 ## References
 
-1. A physics-informed deep learning approach for bearing fault detection. ScienceDirect 2021.
-2. Research on bearing fault diagnosis based on machine learning and SHAP interpretability. Scientific Reports 2025.
-3. SHAP for Efficient Feature Selection in Rolling Bearing Fault Diagnosis. ResearchGate 2024.
-4. Machine Learning and Deep Learning Algorithms for Bearing Fault Diagnostics. arXiv 2019.
-5. CWRU Bearing Dataset. Case Western Reserve University Bearing Data Center.
+1. [A physics-informed deep learning approach for bearing fault detection](https://www.sciencedirect.com/science/article/abs/pii/S0952197621001421) — ScienceDirect 2021
+2. [Research on bearing fault diagnosis based on machine learning and SHAP interpretability](https://www.nature.com/articles/s41598-025-25083-4) — Scientific Reports 2025
+3. [SHAP for Efficient Feature Selection in Rolling Bearing Fault Diagnosis](https://www.researchgate.net/publication/378063501_SHapley_Additive_exPlanations_SHAP_for_Efficient_Feature_Selection_in_Rolling_Bearing_Fault_Diagnosis) — ResearchGate 2024
+4. [Machine Learning and Deep Learning Algorithms for Bearing Fault Diagnostics](https://arxiv.org/pdf/1901.08247v1) — arXiv 2019
+5. [CWRU Bearing Dataset](https://engineering.case.edu/bearingdatacenter) — Case Western Reserve University
 
 ---
 
 ## Author
 
 **Sai Dileep**
+
 Mechanical Engineering, NIT Calicut
+
 Specialisation: Vibration Analysis, Physics-Guided ML, Predictive Maintenance
