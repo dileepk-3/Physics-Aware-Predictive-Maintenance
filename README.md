@@ -174,6 +174,18 @@ Fault frequencies at 1797 RPM:
 pip install numpy scipy scikit-learn matplotlib pywavelets xgboost shap streamlit reportlab seaborn pandas
 ```
 
+### Dataset Setup
+
+Download the CWRU Bearing Dataset from:
+https://engineering.case.edu/bearingdatacenter
+
+Place the downloaded .mat files in the following folders:
+
+- data/CWRU/Healthy/ — files: 97, 98, 99, 100
+- data/CWRU/Ball/ — files: 118, 119, 120, 121, 185, 186, 187, 188
+- data/CWRU/Inner/ — files: 105, 106, 107, 108, 169, 170, 171, 172
+- data/CWRU/Outer/ — files: 294, 295, 296, 297, 313, 315
+
 ---
 
 ## How to Run
